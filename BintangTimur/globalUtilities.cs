@@ -645,5 +645,31 @@ namespace BintangTimur
 
             return commissionValue;
         }
+
+        public string getProductName(string productID)
+        {
+            string result = "";
+
+            result = DS.getDataSingleValue("SELECT IFNULL(PRODUCT_NAME, '') FROM MASTER_PRODUCT WHERE PRODUCT_ID = '" + productID + "'").ToString();
+
+            return result;
+        }
+
+        public string getCustomStringFormatDate(DateTime inputDateTime)
+        {
+            string result = "";
+
+            string dateInput = "";
+            string hourInput = "";
+            string minuteInput = "";
+
+            dateInput = String.Format(culture, "{0:dd-MM-yyyy}", inputDateTime);
+            hourInput = String.Format(culture, "{0:HH}", inputDateTime);
+            minuteInput = String.Format(culture, "{0:mm}", inputDateTime);
+
+            result = dateInput + " " + hourInput + ":" + minuteInput;
+
+            return result;
+        }
     }
 }

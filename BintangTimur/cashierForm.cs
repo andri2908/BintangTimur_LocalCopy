@@ -930,7 +930,7 @@ namespace BintangTimur
             int numericCurrentMonth = 0;
             int numRows = 0;
 
-            SODateTime = String.Format(culture, "{0:dd-MM-yyyy HH:mm}", DateTime.Now);
+            SODateTime = gutil.getCustomStringFormatDate(DateTime.Now);//String.Format(culture, "{0:dd-MM-yyyy HH:mm}", DateTime.Now);
 
             gutil.saveSystemDebugLog(globalConstants.MENU_PENJUALAN, "CASHIER FORM : ATTEMPT TO SAVE SALES DATA [" + SODateTime + "]");
 
@@ -2084,7 +2084,7 @@ namespace BintangTimur
             {
                 noFakturLabel.Text = "SALES QUOTATION";
                 approvalButton.Visible = false;
-                rejectButton.Visible = false;
+                //rejectButton.Visible = false;
                 label12.Visible = false;
                 label13.Visible = false;
                 bayarTextBox.Visible = false;
@@ -2099,12 +2099,12 @@ namespace BintangTimur
                 if (userAccessOption == 1)
                 { 
                     approvalButton.Visible = true;
-                    rejectButton.Visible = true;
+                    //rejectButton.Visible = true;
                 }
                 else
                 { 
                     approvalButton.Visible = false;
-                    rejectButton.Visible = false;
+                    //rejectButton.Visible = false;
                 }
 
                 label12.Visible = false;
@@ -2116,7 +2116,7 @@ namespace BintangTimur
             {
                 noFakturLabel.Text = "";
                 approvalButton.Visible = false;
-                rejectButton.Visible = false;
+                //rejectButton.Visible = false;
             }
             else if (originModuleID == 0) // NORMAL TRANSACTION
             { 

@@ -19,6 +19,7 @@ namespace BintangTimur
     {
         private int originModuleID = 0;
         private int selectedCustomerID = 0;
+        private string selectedRegionID = "0";
 
         private string previousInput = "";
         private string previousInputPhone = "";
@@ -58,7 +59,7 @@ namespace BintangTimur
             DataTable dt = new DataTable();
             string sqlCommand = "";
 
-            sqlCommand = "SELECT CUSTOMER_JOINED_DATE, CUSTOMER_FULL_NAME, IFNULL(CUSTOMER_ADDRESS1, '') AS CUSTOMER_ADDRESS1, " +
+            sqlCommand = "SELECT REGION_ID, CUSTOMER_JOINED_DATE, CUSTOMER_FULL_NAME, IFNULL(CUSTOMER_ADDRESS1, '') AS CUSTOMER_ADDRESS1, " +
                                    "IFNULL(CUSTOMER_ADDRESS2, '') AS CUSTOMER_ADDRESS2, IFNULL(CUSTOMER_ADDRESS_CITY, '') AS CUSTOMER_ADDRESS_CITY, " +
                                    "IFNULL(CUSTOMER_PHONE, '') AS CUSTOMER_PHONE, IFNULL(CUSTOMER_FAX, '') AS CUSTOMER_FAX, IFNULL(CUSTOMER_EMAIL, '') AS CUSTOMER_EMAIL, " +
                                    "IFNULL(CUSTOMER_TOTAL_SALES_COUNT, '0') AS CUSTOMER_TOTAL_SALES_COUNT, IFNULL(CUSTOMER_GROUP, 1) AS CUSTOMER_GROUP, CUSTOMER_ACTIVE " +
@@ -89,9 +90,41 @@ namespace BintangTimur
                             nonAktifCheckbox.Checked = false;
                         else
                             nonAktifCheckbox.Checked = true;
+
+                        regionCombo.Text = regionCombo.Items[rdr.GetInt32("REGION_ID")].ToString();
+                        regionHiddenCombo.SelectedIndex = rdr.GetInt32("REGION_ID");
                     }
                 }
             }
+        }
+
+        private void loadRegionData()
+        {
+            MySqlDataReader rdr;
+            DataTable dt = new DataTable();
+            string sqlCommand = "";
+
+            sqlCommand = "SELECT ID, REGION_NAME FROM MASTER_REGION WHERE REGION_ACTIVE = 1";
+
+            regionCombo.Items.Clear();
+            regionHiddenCombo.Items.Clear();
+
+            regionCombo.Items.Add("-");
+            regionHiddenCombo.Items.Add("0");
+
+            selectedRegionID = "0";
+            using (rdr = DS.getData(sqlCommand))
+            {
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        regionCombo.Items.Add(rdr.GetString("REGION_NAME"));
+                        regionHiddenCombo.Items.Add(rdr.GetString("ID"));
+                    }
+                }
+            }
+            regionCombo.Text = regionCombo.Items[0].ToString();
         }
 
         private void dataPelangganDetailForm_Load(object sender, EventArgs e)
@@ -118,6 +151,8 @@ namespace BintangTimur
                     gUtil.setReadOnlyAllControls(this);
                 }
             }
+
+            loadRegionData();
 
             arrButton[0] = saveButton;
             arrButton[1] = resetbutton;
@@ -220,8 +255,8 @@ namespace BintangTimur
                 {
                     case globalConstants.NEW_CUSTOMER:
                         sqlCommand = "INSERT INTO MASTER_CUSTOMER " +
-                                            "(CUSTOMER_FULL_NAME, CUSTOMER_ADDRESS1, CUSTOMER_ADDRESS2, CUSTOMER_ADDRESS_CITY, CUSTOMER_PHONE, CUSTOMER_FAX, CUSTOMER_EMAIL, CUSTOMER_ACTIVE, CUSTOMER_JOINED_DATE, CUSTOMER_TOTAL_SALES_COUNT, CUSTOMER_GROUP, MAX_CREDIT, CUSTOMER_BLOCKED) " +
-                                            "VALUES ('" + custName + "', '" + custAddress1 + "', '" + custAddress2 + "', '" + custAddressCity + "', '" + custPhone + "', '" + custFax + "', '" + custEmail + "', " + custStatus + ", STR_TO_DATE('" + custJoinedDate + "', '%d-%m-%Y'), " + custTotalSales + ", " + custGroup + ", " + maxCreditAmount + ", " + custBlocked + ")";
+                                            "(CUSTOMER_FULL_NAME, CUSTOMER_ADDRESS1, CUSTOMER_ADDRESS2, CUSTOMER_ADDRESS_CITY, CUSTOMER_PHONE, CUSTOMER_FAX, CUSTOMER_EMAIL, CUSTOMER_ACTIVE, CUSTOMER_JOINED_DATE, CUSTOMER_TOTAL_SALES_COUNT, CUSTOMER_GROUP, MAX_CREDIT, CUSTOMER_BLOCKED, REGION_ID) " +
+                                            "VALUES ('" + custName + "', '" + custAddress1 + "', '" + custAddress2 + "', '" + custAddressCity + "', '" + custPhone + "', '" + custFax + "', '" + custEmail + "', " + custStatus + ", STR_TO_DATE('" + custJoinedDate + "', '%d-%m-%Y'), " + custTotalSales + ", " + custGroup + ", " + maxCreditAmount + ", " + custBlocked + ", " + selectedRegionID +")";
                         gUtil.saveSystemDebugLog(globalConstants.MENU_PELANGGAN, "INSERT NEW CUSTOMER DATA [" + custName + "]");
                         break;
                     case globalConstants.EDIT_CUSTOMER:
@@ -239,7 +274,8 @@ namespace BintangTimur
                                             "CUSTOMER_TOTAL_SALES_COUNT = " + custTotalSales + ", " +
                                             "CUSTOMER_GROUP = " + custGroup + ", " +
                                             "MAX_CREDIT = " + maxCreditAmount + ", " +
-                                            "CUSTOMER_BLOCKED = " + custBlocked + " " +
+                                            "CUSTOMER_BLOCKED = " + custBlocked + ", " +
+                                            "REGION_ID = " + selectedRegionID + " " +
                                             "WHERE CUSTOMER_ID = " + selectedCustomerID;
                         gUtil.saveSystemDebugLog(globalConstants.MENU_PELANGGAN, "EDIT CUSTOMER DATA [" + selectedCustomerID + "]");
                         break;
@@ -390,6 +426,11 @@ namespace BintangTimur
             {
                 maxCredit.Text = previousInput;
             }
+        }
+
+        private void regionCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedRegionID = regionHiddenCombo.Items[regionCombo.SelectedIndex].ToString();
         }
     }
 }

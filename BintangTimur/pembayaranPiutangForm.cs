@@ -383,19 +383,27 @@ namespace BintangTimur
         
         private void printReceipt()
         {
-            int paperLength;
+            string sqlCommandx = "SELECT SH.SALES_INVOICE, SH.SALES_TOTAL, SH.SALES_DISCOUNT_FINAL, SH.SALES_TOP, SH.SALES_TOP_DATE, PC.PAYMENT_DATE, PC.PAYMENT_CONFIRMED, PC.PAYMENT_CONFIRMED_DATE, PC.PAYMENT_NOMINAL, IF(PC.PAYMENT_CONFIRMED = 1, PC.PAYMENT_NOMINAL, 0) AS ACTUAL_PAYMENT " +
+                                              "FROM SALES_HEADER SH, CREDIT C, PAYMENT_CREDIT PC " +
+                                              "WHERE C.SALES_INVOICE = SH.SALES_INVOICE AND PC.CREDIT_ID = C.CREDIT_ID AND SH.SALES_INVOICE = '" + invoiceNoTextBox.Text + "'";
+            DS.writeXML(sqlCommandx, globalConstants.creditPaymentXML);
+            paymentCreditPrintOutForm displayForm = new paymentCreditPrintOutForm();
+            displayForm.ShowDialog(this);
 
-            paperLength = calculatePageLength();
-            PaperSize psize = new PaperSize("Custom", 320, paperLength);//820);
-            printDocument1.DefaultPageSettings.PaperSize = psize;
-            DialogResult result;
-            printPreviewDialog1.Width = 512;
-            printPreviewDialog1.Height = 768;
-            result = printPreviewDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                printDocument1.Print();
-            }
+
+            //int paperLength;
+
+            //paperLength = calculatePageLength();
+            //PaperSize psize = new PaperSize("Custom", 320, paperLength);//820);
+            //printDocument1.DefaultPageSettings.PaperSize = psize;
+            //DialogResult result;
+            //printPreviewDialog1.Width = 512;
+            //printPreviewDialog1.Height = 768;
+            //result = printPreviewDialog1.ShowDialog();
+            //if (result == DialogResult.OK)
+            //{
+            //    printDocument1.Print();
+            //}
         }
 
         private void saveButton_Click(object sender, EventArgs e)

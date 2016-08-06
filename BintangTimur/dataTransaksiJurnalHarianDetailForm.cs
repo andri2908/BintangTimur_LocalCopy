@@ -105,7 +105,7 @@ namespace BintangTimur
                 String pembayaran = carabayarcombobox.GetItemText(carabayarcombobox.SelectedItem);
                 String cabang = branchCombobox.GetItemText(branchCombobox.SelectedItem);
                 int pm_id = Int32.Parse(carabayarcombobox.SelectedValue.ToString());
-                int branch_id = Int32.Parse(branchCombobox.SelectedValue.ToString());
+                int branch_id = 0;// Int32.Parse(branchCombobox.SelectedValue.ToString());
                 //tryparse
                 if (Double.TryParse(gutil.allTrim(NominalTextbox.Text), out nominalakun))
                 {
@@ -274,7 +274,7 @@ namespace BintangTimur
             int Account_ID = 0;
             String TglTrans = "";
             Double NominalAkun = 0;
-            int branch_id = getBranchID();
+            int branch_id = 0;// getBranchID();
             String deskripsi = "";
             int user_id = 0;
             int pm_id = 0;

@@ -41,7 +41,7 @@ namespace BintangTimur {
         
         public override string FullResourceName {
             get {
-                return "RoyalPetz_ADMIN.ReportDebtPaid.rpt";
+                return "BintangTimur.ReportDebtPaid.rpt";
             }
             set {
                 // Do nothing

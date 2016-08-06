@@ -237,13 +237,14 @@
             this.rejectButton.TabIndex = 39;
             this.rejectButton.Text = "REJECT SQ";
             this.rejectButton.UseVisualStyleBackColor = true;
+            this.rejectButton.Visible = false;
             this.rejectButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // approvalButton
             // 
             this.approvalButton.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.approvalButton.ForeColor = System.Drawing.Color.Black;
-            this.approvalButton.Location = new System.Drawing.Point(288, 108);
+            this.approvalButton.Location = new System.Drawing.Point(343, 107);
             this.approvalButton.Name = "approvalButton";
             this.approvalButton.Size = new System.Drawing.Size(158, 34);
             this.approvalButton.TabIndex = 38;

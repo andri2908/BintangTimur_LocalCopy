@@ -11,6 +11,21 @@
     <AssemblyName>BintangTimur</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -110,6 +125,30 @@
     </Compile>
     <Compile Include="createConfigFileForm.Designer.cs">
       <DependentUpon>createConfigFileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="creditPaymentPrintOut.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>creditPaymentPrintOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dataRegion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dataRegion.Designer.cs">
+      <DependentUpon>dataRegion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dataRegionDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dataRegionDetail.Designer.cs">
+      <DependentUpon>dataRegionDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="debtPaymentPrintOut.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>debtPaymentPrintOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="dummyReport.cs">
       <AutoGen>True</AutoGen>
@@ -373,6 +412,12 @@
     <Compile Include="newMessageForm.Designer.cs">
       <DependentUpon>newMessageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="paymentCreditPrintOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="paymentCreditPrintOutForm.Designer.cs">
+      <DependentUpon>paymentCreditPrintOutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="pembayaranHutangForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -567,7 +612,10 @@
     <Compile Include="ReportCreditDueForm.Designer.cs">
       <DependentUpon>ReportCreditDueForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportCreditPaid.cs">
+    <Compile Include="ReportCreditPaid1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportCreditPaid.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportCreditPaidForm.cs">
@@ -614,6 +662,9 @@
     </Compile>
     <Compile Include="ReportDebtPaid.cs">
       <SubType>Component</SubType>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportDebtPaid.rpt</DependentUpon>
     </Compile>
     <Compile Include="ReportDebtPaidForm.cs">
       <SubType>Form</SubType>
@@ -633,7 +684,10 @@
     <Compile Include="ReportDebtUnpaidForm.Designer.cs">
       <DependentUpon>ReportDebtUnpaidForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportFinanceOut.cs">
+    <Compile Include="ReportFinanceOut1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportFinanceOut.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportFinanceOutForm.cs">
@@ -699,7 +753,10 @@
     <Compile Include="ReportProductForm.Designer.cs">
       <DependentUpon>ReportProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportProductMutation.cs">
+    <Compile Include="ReportProductMutation1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportProductMutation.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportProductMutationForm.cs">
@@ -741,7 +798,10 @@
     <Compile Include="ReportPurchaseDetailedForm.Designer.cs">
       <DependentUpon>ReportPurchaseDetailedForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportPurchaseReturn.cs">
+    <Compile Include="ReportPurchaseReturn1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportPurchaseReturn.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportPurchaseReturnForm.cs">
@@ -1026,6 +1086,12 @@
     <Compile Include="dataKategoriProdukForm.Designer.cs">
       <DependentUpon>dataKategoriProdukForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="stokTransferForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stokTransferForm.Designer.cs">
+      <DependentUpon>stokTransferForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TabOrderManager.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1065,8 +1131,22 @@
     <EmbeddedResource Include="createConfigFileForm.resx">
       <DependentUpon>createConfigFileForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="creditPaymentPrintOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>creditPaymentPrintOut.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="crReportContainer.resx">
       <DependentUpon>crReportContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dataRegion.resx">
+      <DependentUpon>dataRegion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dataRegionDetail.resx">
+      <DependentUpon>dataRegionDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="debtPaymentPrintOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>debtPaymentPrintOut.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="dummyReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1196,6 +1276,9 @@
     <EmbeddedResource Include="newMessageForm.resx">
       <DependentUpon>newMessageForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="paymentCreditPrintOutForm.resx">
+      <DependentUpon>paymentCreditPrintOutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pembayaranHutangForm.resx">
       <DependentUpon>pembayaranHutangForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1306,6 +1389,10 @@
     <EmbeddedResource Include="ReportCreditDueForm.resx">
       <DependentUpon>ReportCreditDueForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportCreditPaid.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportCreditPaid1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportCreditPaidForm.resx">
       <DependentUpon>ReportCreditPaidForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1330,6 +1417,10 @@
     <EmbeddedResource Include="ReportDebtDueForm.resx">
       <DependentUpon>ReportDebtDueForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportDebtPaid.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportDebtPaid.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportDebtPaidForm.resx">
       <DependentUpon>ReportDebtPaidForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1339,6 +1430,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportDebtUnpaidForm.resx">
       <DependentUpon>ReportDebtUnpaidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportFinanceOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportFinanceOut1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportFinanceOutForm.resx">
       <DependentUpon>ReportFinanceOutForm.cs</DependentUpon>
@@ -1396,6 +1491,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportPurchaseDetailedForm.resx">
       <DependentUpon>ReportPurchaseDetailedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportPurchaseReturn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportPurchaseReturn1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportPurchaseReturnForm.resx">
       <DependentUpon>ReportPurchaseReturnForm.cs</DependentUpon>
@@ -1550,6 +1649,9 @@
     <EmbeddedResource Include="dataKategoriProdukForm.resx">
       <DependentUpon>dataKategoriProdukForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="stokTransferForm.resx">
+      <DependentUpon>stokTransferForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TabSchemeProvider.resx" />
     <EmbeddedResource Include="XMLGeneratorForm.resx">
       <DependentUpon>XMLGeneratorForm.cs</DependentUpon>
@@ -1569,6 +1671,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
