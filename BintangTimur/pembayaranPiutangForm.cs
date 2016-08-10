@@ -383,9 +383,22 @@ namespace BintangTimur
         
         private void printReceipt()
         {
-            string sqlCommandx = "SELECT SH.SALES_INVOICE, SH.SALES_TOTAL, SH.SALES_DISCOUNT_FINAL, SH.SALES_TOP, SH.SALES_TOP_DATE, PC.PAYMENT_DATE, PC.PAYMENT_CONFIRMED, PC.PAYMENT_CONFIRMED_DATE, PC.PAYMENT_NOMINAL, IF(PC.PAYMENT_CONFIRMED = 1, PC.PAYMENT_NOMINAL, 0) AS ACTUAL_PAYMENT " +
-                                              "FROM SALES_HEADER SH, CREDIT C, PAYMENT_CREDIT PC " +
-                                              "WHERE C.SALES_INVOICE = SH.SALES_INVOICE AND PC.CREDIT_ID = C.CREDIT_ID AND SH.SALES_INVOICE = '" + invoiceNoTextBox.Text + "'";
+            string sqlCommandx;
+            //sqlCommandx = "SELECT SH.SALES_INVOICE, SH.SALES_TOTAL, SH.SALES_DISCOUNT_FINAL, SH.SALES_TOP, SH.SALES_TOP_DATE, PC.PAYMENT_DATE, PC.PAYMENT_CONFIRMED, PC.PAYMENT_CONFIRMED_DATE, PC.PAYMENT_NOMINAL, IF(PC.PAYMENT_CONFIRMED = 1, PC.PAYMENT_NOMINAL, 0) AS ACTUAL_PAYMENT " +
+            //                                  "FROM SALES_HEADER SH, CREDIT C, PAYMENT_CREDIT PC " +
+            //                                  "WHERE C.SALES_INVOICE = SH.SALES_INVOICE AND PC.CREDIT_ID = C.CREDIT_ID AND SH.SALES_INVOICE = '" + invoiceNoTextBox.Text + "'";
+
+            sqlCommandx = "SELECT PC.PAYMENT_ID, SH.SALES_INVOICE, SH.SALES_TOTAL, SH.SALES_DISCOUNT_FINAL, SH.SALES_TOP, SH.SALES_TOP_DATE, PC.PAYMENT_DATE, PC.PAYMENT_CONFIRMED, PC.PAYMENT_CONFIRMED_DATE, PC.PAYMENT_NOMINAL, TAB2.PAID_AMT AS ACTUAL_PAYMENT " +
+                                     "FROM SALES_HEADER SH, CREDIT C, PAYMENT_CREDIT PC, " +
+                                     "(SELECT MAX(PAYMENT_ID) AS PAY_ID " +
+                                     "FROM PAYMENT_CREDIT " +
+                                     "GROUP BY CREDIT_ID) TAB1, " +
+                                     "(SELECT CREDIT_ID, SUM(PAYMENT_NOMINAL) AS PAID_AMT " +
+                                     "FROM PAYMENT_CREDIT " +
+                                     "WHERE PAYMENT_CONFIRMED = 1 " +
+                                     "GROUP BY CREDIT_ID) TAB2 " +
+                                     "WHERE C.SALES_INVOICE = SH.SALES_INVOICE AND PC.CREDIT_ID = C.CREDIT_ID AND PC.PAYMENT_ID = TAB1.PAY_ID AND SH.SALES_INVOICE = '" + invoiceNoTextBox.Text + "'";
+
             DS.writeXML(sqlCommandx, globalConstants.creditPaymentXML);
             paymentCreditPrintOutForm displayForm = new paymentCreditPrintOutForm();
             displayForm.ShowDialog(this);

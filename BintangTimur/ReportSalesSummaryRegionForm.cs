@@ -10,40 +10,38 @@ using System.Windows.Forms;
 using System.IO;
 using CrystalDecisions.ReportSource;
 using CrystalDecisions.CrystalReports.Engine;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Globalization;
 
 namespace BintangTimur
 {
-    public partial class paymentCreditPrintOutForm : Form
+    public partial class ReportSalesSummaryRegionForm : Form
     {
-        private globalUtilities gUtil = new globalUtilities();
-
-        public paymentCreditPrintOutForm()
+        private globalUtilities gutil = new globalUtilities();
+        public ReportSalesSummaryRegionForm()
         {
             InitializeComponent();
         }
 
-        private void crystalReportViewer1_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void paymentCreditPrintOutForm_Load(object sender, EventArgs e)
+        private void ReportSalesSummaryRegionForm_Load(object sender, EventArgs e)
         {
             DataSet dsTempReport = new DataSet();
             try
             {
-                string appPath = Directory.GetCurrentDirectory() + "\\" + globalConstants.creditPaymentXML;
+                string appPath = Directory.GetCurrentDirectory() + "\\" + globalConstants.penjualanRegionXML;
                 dsTempReport.ReadXml(@appPath);
 
                 //prepare report for preview
-                creditPaymentPrintOut rptXMLReport = new creditPaymentPrintOut();
+                ReportSalesSummaryRegion rptXMLReport = new ReportSalesSummaryRegion();
                 CrystalDecisions.CrystalReports.Engine.TextObject txtReportHeader1, txtReportHeader2;
                 txtReportHeader1 = rptXMLReport.ReportDefinition.ReportObjects["NamaTokoLabel"] as TextObject;
                 txtReportHeader2 = rptXMLReport.ReportDefinition.ReportObjects["InfoTokoLabel"] as TextObject;
                 String nama, alamat, telepon, email;
-                if (!gUtil.loadinfotoko(2, out nama, out alamat, out telepon, out email))
+                if (!gutil.loadinfotoko(2, out nama, out alamat, out telepon, out email))
                 {
                     //reset default optsi = 1
-                    if (!gUtil.loadinfotoko(1, out nama, out alamat, out telepon, out email))
+                    if (!gutil.loadinfotoko(1, out nama, out alamat, out telepon, out email))
                     {
                         nama = "TOKO DEFAULT";
                         alamat = "ALAMAT DEFAULT";

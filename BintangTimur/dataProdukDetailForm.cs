@@ -1109,5 +1109,11 @@ namespace BintangTimur
             if (produkDescTextBox.Text.IndexOf('\'') >= 0)
                 produkDescTextBox.Text = produkDescTextBox.Text.Remove(produkDescTextBox.Text.IndexOf('\''), 1);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            currentSelectedKategoriID.Clear();
+            produkKategoriTextBox.Clear();
+        }
     }
 }

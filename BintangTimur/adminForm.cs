@@ -1378,5 +1378,11 @@ namespace BintangTimur
             stokTransferForm displayedForm = new stokTransferForm();
             displayedForm.ShowDialog(this);
         }
+
+        private void toolStripMenuItem12_Click(object sender, EventArgs e)
+        {
+            ReportSalesSummaryRegionSearchForm displayedForm = new ReportSalesSummaryRegionSearchForm();
+            displayedForm.ShowDialog(this);
+        }
     }
 }

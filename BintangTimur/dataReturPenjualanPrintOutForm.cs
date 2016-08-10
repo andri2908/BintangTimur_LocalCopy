@@ -13,29 +13,25 @@ using CrystalDecisions.CrystalReports.Engine;
 
 namespace BintangTimur
 {
-    public partial class paymentCreditPrintOutForm : Form
+    public partial class dataReturPenjualanPrintOutForm : Form
     {
         private globalUtilities gUtil = new globalUtilities();
 
-        public paymentCreditPrintOutForm()
+        public dataReturPenjualanPrintOutForm()
         {
             InitializeComponent();
         }
 
-        private void crystalReportViewer1_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void paymentCreditPrintOutForm_Load(object sender, EventArgs e)
+        private void dataReturPenjualanPrintOutForm_Load(object sender, EventArgs e)
         {
             DataSet dsTempReport = new DataSet();
             try
             {
-                string appPath = Directory.GetCurrentDirectory() + "\\" + globalConstants.creditPaymentXML;
+                string appPath = Directory.GetCurrentDirectory() + "\\" + globalConstants.returPenjualanXML;
                 dsTempReport.ReadXml(@appPath);
 
                 //prepare report for preview
-                creditPaymentPrintOut rptXMLReport = new creditPaymentPrintOut();
+                dataReturPenjualanPrintOut rptXMLReport = new dataReturPenjualanPrintOut();
                 CrystalDecisions.CrystalReports.Engine.TextObject txtReportHeader1, txtReportHeader2;
                 txtReportHeader1 = rptXMLReport.ReportDefinition.ReportObjects["NamaTokoLabel"] as TextObject;
                 txtReportHeader2 = rptXMLReport.ReportDefinition.ReportObjects["InfoTokoLabel"] as TextObject;

@@ -1416,19 +1416,36 @@ namespace BintangTimur
 
         private void printReceipt()
         {
-            int paperLength;
+            string sqlCommandx;
+            //sqlCommandx = "SELECT SH.SALES_INVOICE, SH.SALES_TOTAL, SH.SALES_DISCOUNT_FINAL, SH.SALES_TOP, SH.SALES_TOP_DATE, PC.PAYMENT_DATE, PC.PAYMENT_CONFIRMED, PC.PAYMENT_CONFIRMED_DATE, PC.PAYMENT_NOMINAL, IF(PC.PAYMENT_CONFIRMED = 1, PC.PAYMENT_NOMINAL, 0) AS ACTUAL_PAYMENT " +
+            //                                  "FROM SALES_HEADER SH, CREDIT C, PAYMENT_CREDIT PC " +
+            //                                  "WHERE C.SALES_INVOICE = SH.SALES_INVOICE AND PC.CREDIT_ID = C.CREDIT_ID AND SH.SALES_INVOICE = '" + invoiceNoTextBox.Text + "'";
 
-            paperLength = calculatePageLength();
-            PaperSize psize = new PaperSize("Custom", 320, paperLength);//820);
-            printDocument1.DefaultPageSettings.PaperSize = psize;
-            DialogResult result;
-            printPreviewDialog1.Width = 512;
-            printPreviewDialog1.Height = 768;
-            result = printPreviewDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                printDocument1.Print();
-            }
+            sqlCommandx = "SELECT RH.SALES_INVOICE, MP.PRODUCT_NAME, RD.PRODUCT_SALES_PRICE, RD.PRODUCT_RETURN_QTY, RD.RS_DESCRIPTION, RD.RS_SUBTOTAL " +
+                                     "FROM MASTER_PRODUCT MP, RETURN_SALES_DETAIL RD, RETURN_SALES_HEADER RH, " +
+                                     "(SELECT MAX(RS_INVOICE) AS INVOICE " +
+                                     "FROM RETURN_SALES_HEADER " +
+                                     "GROUP BY SALES_INVOICE) TAB1 " +
+                                     "WHERE RD.PRODUCT_ID = MP.PRODUCT_ID AND RH.RS_INVOICE = TAB1.INVOICE AND RD.RS_INVOICE = RH.RS_INVOICE AND RH.SALES_INVOICE = '" + invoiceInfoTextBox.Text + "'";
+
+            DS.writeXML(sqlCommandx, globalConstants.returPenjualanXML);
+            dataReturPenjualanPrintOutForm displayForm = new dataReturPenjualanPrintOutForm();
+            displayForm.ShowDialog(this);
+
+
+            //int paperLength;
+
+            //paperLength = calculatePageLength();
+            //PaperSize psize = new PaperSize("Custom", 320, paperLength);//820);
+            //printDocument1.DefaultPageSettings.PaperSize = psize;
+            //DialogResult result;
+            //printPreviewDialog1.Width = 512;
+            //printPreviewDialog1.Height = 768;
+            //result = printPreviewDialog1.ShowDialog();
+            //if (result == DialogResult.OK)
+            //{
+            //    printDocument1.Print();
+            //}
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -1473,7 +1490,10 @@ namespace BintangTimur
                 gutil.saveUserChangeLog(globalConstants.MENU_RETUR_PENJUALAN, globalConstants.CHANGE_LOG_INSERT, "RETUR PENJUALAN [" + noReturTextBox.Text + "]");
                 errorLabel.Text = "";
 
-                printReceipt();
+                if (originModuleID != globalConstants.RETUR_PENJUALAN_STOCK_ADJUSTMENT &&  DialogResult.Yes == MessageBox.Show("PRINT RECEIPT ?", "WARNING", MessageBoxButtons.YesNo))
+                {
+                    printReceipt();
+                }
 
                 gutil.showSuccess(gutil.INS);
                 saveButton.Enabled = false;
@@ -1868,6 +1888,14 @@ namespace BintangTimur
                 }
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (originModuleID != globalConstants.RETUR_PENJUALAN_STOCK_ADJUSTMENT && DialogResult.Yes == MessageBox.Show("PRINT RECEIPT ?", "WARNING", MessageBoxButtons.YesNo))
+            {
+                printReceipt();
+            }
         }
     }
 }

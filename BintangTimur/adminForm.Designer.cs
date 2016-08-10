@@ -123,6 +123,7 @@
             this.detailedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.perProdukBarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
             this.omzetPenjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topSaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.globalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1123,7 +1124,8 @@
             this.penjualanProdukToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.detailedToolStripMenuItem,
             this.summaryToolStripMenuItem,
-            this.perProdukBarangToolStripMenuItem});
+            this.perProdukBarangToolStripMenuItem,
+            this.toolStripMenuItem12});
             this.penjualanProdukToolStripMenuItem.ForeColor = System.Drawing.Color.FloralWhite;
             this.penjualanProdukToolStripMenuItem.Name = "penjualanProdukToolStripMenuItem";
             this.penjualanProdukToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
@@ -1155,6 +1157,15 @@
             this.perProdukBarangToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.perProdukBarangToolStripMenuItem.Text = "Per Produk-Barang";
             this.perProdukBarangToolStripMenuItem.Click += new System.EventHandler(this.perProdukBarangToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem12
+            // 
+            this.toolStripMenuItem12.BackColor = System.Drawing.Color.SteelBlue;
+            this.toolStripMenuItem12.ForeColor = System.Drawing.Color.FloralWhite;
+            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(213, 22);
+            this.toolStripMenuItem12.Text = "Per Region";
+            this.toolStripMenuItem12.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
             // 
             // omzetPenjualanToolStripMenuItem
             // 
@@ -1966,6 +1977,7 @@
         private System.Windows.Forms.ToolStripMenuItem MENU_membership;
         private System.Windows.Forms.ToolStripMenuItem MENU_tambahRegion;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
         //private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }

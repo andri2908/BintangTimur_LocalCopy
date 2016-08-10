@@ -144,11 +144,17 @@
     <Compile Include="dataRegionDetail.Designer.cs">
       <DependentUpon>dataRegionDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="debtPaymentPrintOut.cs">
+    <Compile Include="dataReturPenjualanPrintOut.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>debtPaymentPrintOut.rpt</DependentUpon>
+      <DependentUpon>dataReturPenjualanPrintOut.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dataReturPenjualanPrintOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dataReturPenjualanPrintOutForm.Designer.cs">
+      <DependentUpon>dataReturPenjualanPrintOutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="dummyReport.cs">
       <AutoGen>True</AutoGen>
@@ -894,6 +900,24 @@
     <Compile Include="ReportSalesSummaryForm.Designer.cs">
       <DependentUpon>ReportSalesSummaryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportSalesSummaryRegion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportSalesSummaryRegion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportSalesSummaryRegionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportSalesSummaryRegionForm.Designer.cs">
+      <DependentUpon>ReportSalesSummaryRegionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportSalesSummaryRegionSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportSalesSummaryRegionSearchForm.Designer.cs">
+      <DependentUpon>ReportSalesSummaryRegionSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportSalesSummarySearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1144,9 +1168,12 @@
     <EmbeddedResource Include="dataRegionDetail.resx">
       <DependentUpon>dataRegionDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="debtPaymentPrintOut.rpt">
+    <EmbeddedResource Include="dataReturPenjualanPrintOut.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>debtPaymentPrintOut.cs</LastGenOutput>
+      <LastGenOutput>dataReturPenjualanPrintOut.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dataReturPenjualanPrintOutForm.resx">
+      <DependentUpon>dataReturPenjualanPrintOutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dummyReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1542,6 +1569,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSalesSummaryForm.resx">
       <DependentUpon>ReportSalesSummaryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSalesSummaryRegion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportSalesSummaryRegion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSalesSummaryRegionForm.resx">
+      <DependentUpon>ReportSalesSummaryRegionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSalesSummaryRegionSearchForm.resx">
+      <DependentUpon>ReportSalesSummaryRegionSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSalesSummarySearchForm.resx">
       <DependentUpon>ReportSalesSummarySearchForm.cs</DependentUpon>

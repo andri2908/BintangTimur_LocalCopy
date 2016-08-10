@@ -50,6 +50,7 @@
             this.ClientSize = new System.Drawing.Size(715, 493);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "paymentCreditPrintOutForm";
+            this.Load += new System.EventHandler(this.paymentCreditPrintOutForm_Load);
             this.ResumeLayout(false);
 
         }
