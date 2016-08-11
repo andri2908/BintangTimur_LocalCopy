@@ -156,6 +156,12 @@
     <Compile Include="dataReturPenjualanPrintOutForm.Designer.cs">
       <DependentUpon>dataReturPenjualanPrintOutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="dataReturPermintaanPrintOut.cs">
+      <SubType>Component</SubType>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dataReturPermintaanPrintOut.rpt</DependentUpon>
+    </Compile>
     <Compile Include="dummyReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,9 +275,6 @@
     </Compile>
     <Compile Include="dataReturPermintaanForm.Designer.cs">
       <DependentUpon>dataReturPermintaanForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="dataReturPermintaanPrintOut.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="dataReturPermintaanPrintOutForm.cs">
       <SubType>Form</SubType>
@@ -1174,6 +1177,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dataReturPenjualanPrintOutForm.resx">
       <DependentUpon>dataReturPenjualanPrintOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dataReturPermintaanPrintOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>dataReturPermintaanPrintOut.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="dummyReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -254,10 +254,10 @@ namespace BintangTimur
             {
                 label3.Text = "PELANGGAN";
                 fillInCustomerCombo();
-                labelPrintOut.Visible = true;
-                comboPrintOut.Visible = true;
-                comboPrintOut.SelectedIndex = 0;
-                comboPrintOut.Text = comboPrintOut.Items[comboPrintOut.SelectedIndex].ToString();
+                //labelPrintOut.Visible = true;
+                //comboPrintOut.Visible = true;
+                //comboPrintOut.SelectedIndex = 0;
+                //comboPrintOut.Text = comboPrintOut.Items[comboPrintOut.SelectedIndex].ToString();
             }
 
             arrButton[0] = displayButton;
@@ -316,13 +316,24 @@ namespace BintangTimur
             string returNo = noRetur;
             string sqlCommandx = "";
 
-            sqlCommandx = "SELECT 'RETUR PENJUALAN' AS MODULE_TYPE, RSH.RS_INVOICE AS 'NO_RETUR', IFNULL(MC.CUSTOMER_FULL_NAME, '') AS 'NAME', RSH.RS_DATETIME AS 'RETUR_DATE', RSH.RS_TOTAL AS 'RETUR_TOTAL', MP.PRODUCT_NAME AS 'PRODUCT_NAME', RSD.PRODUCT_SALES_PRICE AS 'PRICE', RSD.PRODUCT_RETURN_QTY AS 'QTY', RSD.RS_DESCRIPTION AS 'DESC', RSD.RS_SUBTOTAL AS 'SUBTOTAL' " +
-                                     "FROM RETURN_SALES_HEADER RSH LEFT OUTER JOIN MASTER_CUSTOMER MC ON RSH.CUSTOMER_ID = MC.CUSTOMER_ID, MASTER_PRODUCT MP, RETURN_SALES_DETAIL RSD " +
-                                     "WHERE RSD.RS_INVOICE = RSH.RS_INVOICE AND RSD.PRODUCT_ID = MP.PRODUCT_ID AND RSH.RS_INVOICE = '" + returNo + "'";
+            sqlCommandx = "SELECT RH.SALES_INVOICE, MP.PRODUCT_NAME, RD.PRODUCT_SALES_PRICE, RD.PRODUCT_RETURN_QTY, RD.RS_DESCRIPTION, RD.RS_SUBTOTAL " +
+                                     "FROM MASTER_PRODUCT MP, RETURN_SALES_DETAIL RD, RETURN_SALES_HEADER RH, " +
+                                     "(SELECT MAX(RS_INVOICE) AS INVOICE " +
+                                     "FROM RETURN_SALES_HEADER " +
+                                     "GROUP BY SALES_INVOICE) TAB1 " +
+                                     "WHERE RD.PRODUCT_ID = MP.PRODUCT_ID AND RH.RS_INVOICE = TAB1.INVOICE AND RD.RS_INVOICE = RH.RS_INVOICE AND RH.RS_INVOICE = '" + returNo + "'";
 
-            DS.writeXML(sqlCommandx, globalConstants.returPermintaanXML);
-            dataReturPermintaanPrintOutForm displayForm = new dataReturPermintaanPrintOutForm();
+            DS.writeXML(sqlCommandx, globalConstants.returPenjualanXML);
+            dataReturPenjualanPrintOutForm displayForm = new dataReturPenjualanPrintOutForm();
             displayForm.ShowDialog(this);
+
+            //sqlCommandx = "SELECT 'RETUR PENJUALAN' AS MODULE_TYPE, RSH.RS_INVOICE AS 'NO_RETUR', IFNULL(MC.CUSTOMER_FULL_NAME, '') AS 'NAME', RSH.RS_DATETIME AS 'RETUR_DATE', RSH.RS_TOTAL AS 'RETUR_TOTAL', MP.PRODUCT_NAME AS 'PRODUCT_NAME', RSD.PRODUCT_SALES_PRICE AS 'PRICE', RSD.PRODUCT_RETURN_QTY AS 'QTY', RSD.RS_DESCRIPTION AS 'DESC', RSD.RS_SUBTOTAL AS 'SUBTOTAL' " +
+            //                         "FROM RETURN_SALES_HEADER RSH LEFT OUTER JOIN MASTER_CUSTOMER MC ON RSH.CUSTOMER_ID = MC.CUSTOMER_ID, MASTER_PRODUCT MP, RETURN_SALES_DETAIL RSD " +
+            //                         "WHERE RSD.RS_INVOICE = RSH.RS_INVOICE AND RSD.PRODUCT_ID = MP.PRODUCT_ID AND RSH.RS_INVOICE = '" + returNo + "'";
+
+            //DS.writeXML(sqlCommandx, globalConstants.returPermintaanXML);
+            //dataReturPermintaanPrintOutForm displayForm = new dataReturPermintaanPrintOutForm();
+            //displayForm.ShowDialog(this);
         }
 
         private void printOutSelectedRetur(string noRetur)
@@ -339,9 +350,9 @@ namespace BintangTimur
                 }
                 else if (originModuleID == globalConstants.RETUR_PENJUALAN)
                 {
-                    if (comboPrintOut.SelectedIndex == 0)
-                        printReceipt(noRetur);
-                    else
+                    //if (comboPrintOut.SelectedIndex == 0)
+                    //    printReceipt(noRetur);
+                    //else
                         printOutReturPenjualan(noRetur);
                 }
             }

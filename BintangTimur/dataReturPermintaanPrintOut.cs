@@ -41,7 +41,7 @@ namespace BintangTimur {
         
         public override string FullResourceName {
             get {
-                return "RoyalPetz_ADMIN.dataReturPermintaanPrintOut.rpt";
+                return "BintangTimur.dataReturPermintaanPrintOut.rpt";
             }
             set {
                 // Do nothing
