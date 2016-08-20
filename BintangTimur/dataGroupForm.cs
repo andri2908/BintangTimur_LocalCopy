@@ -177,6 +177,7 @@ namespace BintangTimur
         private void dataGroupForm_Load(object sender, EventArgs e)
         {
             gutil.reArrangeTabOrder(this);
+            namaGroupTextbox.Select();
         }
 
     }

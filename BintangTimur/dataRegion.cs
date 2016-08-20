@@ -69,6 +69,8 @@ namespace BintangTimur
                 newButton.Visible = true;
             else
                 newButton.Visible = false;
+
+            namaBranchTextbox.Select();
         }
 
         private void namaBranchTextbox_TextChanged(object sender, EventArgs e)

@@ -125,6 +125,8 @@ namespace BintangTimur
         private void dataSupplierForm_Load(object sender, EventArgs e)
         {
             gutil.reArrangeTabOrder(this);
+
+            namaSupplierTextbox.Select();
         }
 
         private void suppliernonactiveoption_CheckedChanged(object sender, EventArgs e)

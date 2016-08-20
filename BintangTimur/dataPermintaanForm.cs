@@ -192,6 +192,8 @@ namespace BintangTimur
             gUtil.reArrangeButtonPosition(arrButton, arrButton[0].Top, this.Width);
 
             gUtil.reArrangeTabOrder(this);
+
+            noROInvoiceTextBox.Select();
         }
 
         private void dataRequestOrderGridView_DoubleClick(object sender, EventArgs e)

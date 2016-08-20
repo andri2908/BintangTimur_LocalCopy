@@ -199,6 +199,8 @@ namespace BintangTimur
                 newButton.Visible = true;
             else
                 newButton.Visible = false;
+
+            namaUserTextbox.Select();
         }
 
         private void CetakButton_Click(object sender, EventArgs e)
@@ -208,6 +210,11 @@ namespace BintangTimur
             DS.writeXML(sqlCommandx,globalConstants.UserXML);
             ReportUserForm displayedform = new ReportUserForm();
             displayedform.ShowDialog(this);
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

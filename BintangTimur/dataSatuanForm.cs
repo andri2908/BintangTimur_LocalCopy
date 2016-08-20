@@ -133,6 +133,7 @@ namespace BintangTimur
         private void dataSatuanForm_Load(object sender, EventArgs e)
         {
             gutil.reArrangeTabOrder(this);
+            unitNameTextBox.Select();
         }
 
         private void dataUnitGridView_KeyDown(object sender, KeyEventArgs e)
