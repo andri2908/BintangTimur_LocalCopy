@@ -216,4 +216,3 @@ D:\Project\BintangTimur\BintangTimur\BintangTimur\obj\Debug\BintangTimur.XMLGene
 D:\Project\BintangTimur\BintangTimur\BintangTimur\obj\Debug\BintangTimur.csproj.GenerateResource.Cache
 D:\Project\BintangTimur\BintangTimur\BintangTimur\obj\Debug\BintangTimur.exe
 D:\Project\BintangTimur\BintangTimur\BintangTimur\obj\Debug\BintangTimur.pdb
-D:\Project\BintangTimur_LocalCopy\BintangTimur\bin\Debug\BintangTimur.exe.config
